@@ -33,7 +33,8 @@ help=@as []
 screensaver=@as []
 
 [org/gnome/shell]
-enabled-extensions=['background-logo@fedorahosted.org', 'tilingshell@ferrarodomenico.com']
+enabled-extensions=['background-logo@fedorahosted.org', 'tilingshell@ferrarodomenico.com', 'caffeine@patapon.info', 'dash-to-dock@micxgx.gmail.com']
+favorite-apps=['org.mozilla.firefox.desktop', 'Alacritty.desktop', 'code.desktop']
 
 [org/gnome/shell/extensions/tilingshell]
 edge-tiling-mode='default'
@@ -56,3 +57,19 @@ switch-to-application-1=@as []
 switch-to-application-2=@as []
 switch-to-application-3=@as []
 switch-to-application-4=@as []
+
+[org/gnome/nautilus/list-view]
+default-column-order=['name', 'size', 'type', 'owner', 'group', 'permissions', 'date_modified', 'date_accessed', 'date_created', 'recency', 'detailed_type']
+default-visible-columns=['name', 'size', 'permissions', 'date_modified']
+use-tree-view=true
+
+[org/gnome/nautilus/preferences]
+date-time-format='detailed'
+default-folder-viewer='list-view'
+
+[org/gtk/gtk4/settings/file-chooser]
+show-hidden=true
+sort-directories-first=true
+
+[org/gnome/shell/extensions/dash-to-dock]
+hot-keys=false
