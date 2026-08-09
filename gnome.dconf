@@ -1,4 +1,5 @@
 [org/gnome/desktop/wm/keybindings]
+close=['<Super>q']
 maximize=@as []
 minimize=@as []
 move-to-monitor-down=@as []
@@ -30,7 +31,7 @@ toggle-tiled-right=@as []
 
 [org/gnome/settings-daemon/plugins/media-keys]
 help=@as []
-screensaver=@as []
+screensaver=['<Shift><Super>backslash']
 
 [org/gnome/shell]
 enabled-extensions=['background-logo@fedorahosted.org', 'tilingshell@ferrarodomenico.com', 'caffeine@patapon.info', 'dash-to-dock@micxgx.gmail.com']
