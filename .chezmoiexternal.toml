@@ -1,6 +1,6 @@
 ["dev/home/tldr"]
     type = "git-repo"
-    url = "home.github.com:ceeewatt/tldr.git"
+    url = "home.github.com:colin360/tldr.git"
 [".config/nvim"]
     type = "git-repo"
-    url = "home.github.com:ceeewatt/nvim.git"
+    url = "home.github.com:colin360/nvim.git"

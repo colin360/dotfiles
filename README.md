@@ -48,7 +48,7 @@ The following commands should install the chezmoi executable to `~/opt` and crea
 mkdir -p ~/opt ~/.local/bin ~/dev/{home,work} ~/temp
 sh -c "$(curl -fsLS https://get.chezmoi.io)" -- -b ~/opt
 ln -sf ~/opt/chezmoi ~/.local/bin
-chezmoi init -S ~/dev/home/dotfiles home.github.com:ceeewatt/dotfiles.git
+chezmoi init -S ~/dev/home/dotfiles home.github.com:colin360/dotfiles.git
 ```
 
 ## 5. Apply changes with: `chezmoi apply`
@@ -72,7 +72,7 @@ git remote set-url --push upstream NONE
 # Since this repo isn't under ~/dev we must manually set these
 cd ~/.config/nvim
 git config --local user.name "Colin Watson"
-git config --local user.email "137962378+ceeewatt@users.noreply.github.com"
+git config --local user.email "264837520+colin360@users.noreply.github.com"
 ```
 
 ### Windows
