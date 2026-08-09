@@ -1,0 +1,11 @@
+{
+    "workbench.colorTheme": "Dark Modern",
+    "editor.renderWhitespace": "all",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "editor.rulers": [
+        80
+    ],
+    "files.trimTrailingWhitespace": true,
+    "vim.useSystemClipboard": true
+}
