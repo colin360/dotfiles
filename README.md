@@ -2,7 +2,7 @@
 
 This repository is intended to hold the config files for the Unix utilities used across my various machines.
 
-I'm using [chezmoi](www.chezmoi.io), the dotfile management tool that allows for declaratively defining your configurations across many diverse machines from a single source of truth.
+I'm using [chezmoi](https://chezmoi.io), the dotfile management tool that allows for declaratively defining your configurations across many diverse machines from a single source of truth.
 
 At present, I use two primary x86_64 desktops: One running Fedora 44; the other running Windows with Ubuntu 26.04 on WSL. My chezmoi configuration will largely be designed around these machines but should be generally applicable to other Ubuntu- or Fedora- flavors of Linux, particularly those running GNOME.
 
@@ -29,7 +29,7 @@ chmod 700 ~/.ssh
 
 ## 2. If running GNOME, install/enable extensions
 
-Ensure the [GNOME shell integration](addons.mozilla.org/firefox/addon/gnome-shell-integration) Firefox extension is installed. This should already be installed if you're signed into your Mozilla account.
+Ensure the [GNOME shell integration](https://addons.mozilla.org/firefox/addon/gnome-shell-integration) Firefox extension is installed. This should already be installed if you're signed into your Mozilla account.
 
 From `extensions.gnome.org`, install the desired extensions. See `enabled-extensions` in the dconf settings.
 
@@ -58,7 +58,7 @@ Use any combination of `chezmoi status`, `chezmoi diff`, or `chezmoi cat [file]`
 ## 6. Misc. optional setup
 
 Desktop wallpapers:
-- [Celestial Antiquity](github.com/diinki/wallpapers)
+- [Celestial Antiquity](https://github.com/diinki/wallpapers)
 - more to come...
 
 ### Linux
