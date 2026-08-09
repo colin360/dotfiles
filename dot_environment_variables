@@ -7,4 +7,4 @@ export VISUAL=nvim
 # export SYSTEMD_PAGER=
 
 # https://github.com/tldr-pages/tldr-python-client#remote-source
-export TLDR_PAGES_SOURCE_LOCATION=file:///home/${USER}/dev/home/tldr/pages
+export TLDR_PAGES_SOURCE_LOCATION=file:///home/$USER/dev/home/tldr/pages
