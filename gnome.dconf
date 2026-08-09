@@ -30,8 +30,14 @@ toggle-tiled-left=@as []
 toggle-tiled-right=@as []
 
 [org/gnome/settings-daemon/plugins/media-keys]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
 help=@as []
 screensaver=['<Shift><Super>backslash']
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Super>Return'
+command='alacritty'
+name='launch-terminal'
 
 [org/gnome/shell]
 enabled-extensions=['background-logo@fedorahosted.org', 'tilingshell@ferrarodomenico.com', 'caffeine@patapon.info', 'dash-to-dock@micxgx.gmail.com']
