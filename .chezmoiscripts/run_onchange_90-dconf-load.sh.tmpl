@@ -1,0 +1,10 @@
+{{ if not (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+{{ if eq .desktopEnv "gnome" -}}
+#!/usr/bin/env bash
+
+# https://www.chezmoi.io/user-guide/use-scripts-to-perform-actions/#run-a-script-when-the-contents-of-another-file-changes
+# gnome.dconf hash: {{ include "gnome.dconf" | sha256sum }}
+dconf load / < {{ joinPath .chezmoi.sourceDir "gnome.dconf" | quote }}
+
+{{ end -}}
+{{ end -}}

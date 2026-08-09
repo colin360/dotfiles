@@ -3,10 +3,16 @@
 {{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
 
+{{- $desktopEnv := "none" -}}
+{{- if eq .chezmoi.os "linux" -}}
+{{-   $desktopEnv = output "sh" "-c" "echo $XDG_SESSION_DESKTOP" | trim -}}
+{{- end -}}
+
 {{- $emailWork := promptStringOnce . "emailWork" "What is your work email" -}}
 
 sourceDir = {{ joinPath .chezmoi.homeDir "dev" "home" "dotfiles" | quote }}
 
 [data]
     osid = {{ $osid | quote }}
+    desktopEnv = {{ $desktopEnv | quote }}
     emailWork = {{ $emailWork | quote }}
