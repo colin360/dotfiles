@@ -53,6 +53,8 @@ chezmoi init -S ~/dev/home/dotfiles home.github.com:colin360/dotfiles.git
 
 ## 5. Apply changes with: `chezmoi apply`
 
+On Ubuntu, be sure to update the package index (ie: `sudo apt update`) before running the apply command.
+
 Use any combination of `chezmoi status`, `chezmoi diff`, or `chezmoi cat [file]` to inspect the changes more closely before applying them.
 
 ## 6. Misc. optional setup
