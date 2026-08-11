@@ -18,6 +18,7 @@ systemPackages:
     - vim-enhanced
     - dconf-editor
     - gnome-tweaks
+    - python3-ipython
   apt:
     - curl
     - pipx
@@ -38,6 +39,8 @@ systemPackages:
     - vim
     - dconf-editor
     - gnome-tweaks
+    - ipython3
+    - python3-venv
   aptIgnoreWsl:
     - alacritty
     - dconf-editor
