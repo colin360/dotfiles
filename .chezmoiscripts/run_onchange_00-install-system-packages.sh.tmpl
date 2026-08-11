@@ -8,6 +8,8 @@ sudo dnf install -y {{ . | quote }}
 
 {{ else if eq .osid "linux-ubuntu" -}}
 
+sudo apt update
+
 {{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 # Ubuntu on WSL: install all apt packages except those in aptIgnoreWsl
 PGK_APT=( {{ range .systemPackages.apt }} {{ . }} {{ end }} )
