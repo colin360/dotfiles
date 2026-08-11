@@ -102,3 +102,20 @@ To disable font ligatures, in the same `settings.json` file, add or modify the `
     }
 }
 ```
+
+Adjust copy/paste keybindings:
+- By default, Windows Terminal uses ctrl+v for pasting from the system clipboard. This keybinding conflicts with vim's visual block mode. In `settings.json`, add or modify `keybindings` to match the following:
+
+```json
+"keybindings":
+[
+    {
+        "id": "Terminal.CopyToClipboard",
+        "keys": "ctrl+shift+c"
+    },
+    {
+        "id": "Terminal.PasteFromClipboard",
+        "keys": "ctrl+shift+v"
+    }
+]
+```
