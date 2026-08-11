@@ -19,6 +19,7 @@ systemPackages:
     - dconf-editor
     - gnome-tweaks
     - python3-ipython
+    - nodejs
   apt:
     - curl
     - pipx
@@ -41,6 +42,8 @@ systemPackages:
     - gnome-tweaks
     - ipython3
     - python3-venv
+    - nodejs
+    - npm
   aptIgnoreWsl:
     - alacritty
     - dconf-editor
