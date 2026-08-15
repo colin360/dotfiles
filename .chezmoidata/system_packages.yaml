@@ -20,6 +20,8 @@ systemPackages:
     - gnome-tweaks
     - python3-ipython
     - nodejs
+    - zstd
+    - xdg-utils
   apt:
     - curl
     - pipx
@@ -44,7 +46,10 @@ systemPackages:
     - python3-venv
     - nodejs
     - npm
+    - zstd
+    - xdg-utils
   aptIgnoreWsl:
     - alacritty
     - dconf-editor
     - gnome-tweaks
+    - xdg-utils

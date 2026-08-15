@@ -1,0 +1,137 @@
+{{ if not (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+{{ if eq .chezmoi.arch "amd64" -}}
+#!/usr/bin/env bash
+
+# 1) Download anki tarball from github releases. If ANKI_VER is not set, download latest.
+# 2) Extract to ~/opt/anki-linux (~/opt can be changed via PREFIX)
+#    - If target directory already exists, remove it
+# 3) Rudimentary check to verify the contents match what we expect
+# 4) Add symlink in ~/.local/bin to anki executable
+# 5) Install anki man page to ~/.local/share/man/man1
+# 6) Install anki desktop entry
+# 7) Install anki xdg desktop mime types
+
+set -e
+
+ANKI_VER=''   # eg: 26.08.1
+PREFIX="${PREFIX:-/home/$USER/opt}"
+
+INSTALL_DIR=$(realpath -m $PREFIX/anki-linux)
+
+download_and_extract_tarball()
+{
+    local ver="$1"
+    local owner='ankitects'
+    local repo='anki'
+
+    find_latest_release()
+    {
+        # Anki embeds the version number in the names of its release assets
+        # which makes it harder to programmatically download the latest version.
+        # Here, we're fetching the latest version number from the github api.
+        local endpoint="https://api.github.com/repos/${owner}/${repo}/releases/latest"
+        local latest_release=$(curl -s $endpoint | jq -r '.tag_name')
+        echo $latest_release
+    }
+
+    local root="https://github.com/${owner}/${repo}"
+    if [ -n "$ver" ]; then
+        echo "using anki version $ver"
+        local exe="anki-${ver}-linux-x86_64.tar.zst"
+        local url="${root}/releases/download/${ver}/${exe}"
+    else
+        local latest_ver=$(find_latest_release)
+        if [ -z "$latest_ver" ]; then
+            echo "error: failed to get latest release tag from github api"
+            exit 1
+        fi
+
+        echo "found latest anki version $latest_ver"
+        local exe="anki-${latest_ver}-linux-x86_64.tar.zst"
+        local url="${root}/releases/latest/download/${exe}"
+    fi
+
+    if [ -d "$INSTALL_DIR" ]; then
+        echo "target directory already exists... creating backup"
+        local backup_dir="${INSTALL_DIR}.bak"
+        mv "$INSTALL_DIR" "$backup_dir"
+    fi
+
+    echo "downloading anki to $INSTALL_DIR from $url"
+    mkdir -p $PREFIX
+    curl -fsSL $url | tar --zstd -xf - -C "$PREFIX"
+
+    if [ ! -d "$INSTALL_DIR" ]; then
+        # Sanity check
+        echo "error: expected anki to extract to $INSTALL_DIR... check $PREFIX for installation"
+        exit 1
+    fi
+
+    echo "successfully extracted anki to $INSTALL_DIR"
+    if [ -n "$backup_dir" ]; then
+        echo "removing previous anki installation at ${backup_dir}"
+        rm -r ${backup_dir}
+    fi
+}
+
+function install_anki_locally()
+{
+    function verify_artifacts()
+    {
+        # In case the directory structure changes in future
+
+        if [ ! -x "$INSTALL_DIR/anki" ]; then
+            echo "error: expected to find anki executable in install directory"
+            exit 1
+        elif [ ! -f "$INSTALL_DIR/anki.1" ]; then
+            echo "error: expected to find anki.1 man page in install directory"
+            exit 1
+        elif [ ! -f "$INSTALL_DIR/anki.desktop" ]; then
+            echo "error: expected to find anki.desktop in install directory"
+            exit 1
+        elif [ ! -f "$INSTALL_DIR/anki.png" ]; then
+            echo "error: expected to find anki.png in install directory"
+            exit 1
+        elif [ ! -f "$INSTALL_DIR/anki.xml" ]; then
+            echo "error: expected to find anki.xml page in install directory"
+            exit 1
+        fi
+    }
+
+    verify_artifacts
+
+    mkdir -p ~/.local/bin ~/.local/share/man/man1
+    ln -sf "$INSTALL_DIR/anki" ~/.local/bin
+    ln -sf "$INSTALL_DIR/anki.1" ~/.local/share/man/man1
+
+    # Install desktop entry to local applications folder (ie: ~/.local/share/applications)
+    xdg-desktop-menu install --novendor --mode user "$INSTALL_DIR/anki.desktop"
+
+    # Install desktop entry icon to local icons folder (ie: ~/.local/share/icons)
+    xdg-icon-resource install --novendor --mode user --context apps --size 48 "$INSTALL_DIR/anki.png" anki
+
+    # Install mime type to user directory (ie: ~/.local/share/mime/packages)
+    xdg-mime install --mode user --novendor "$INSTALL_DIR/anki.xml"
+
+    # Set anki as default app for following mime types (see ~/.config/mimeapps.list)
+    xdg-mime default anki.desktop application/x-colpkg
+    xdg-mime default anki.desktop application/x-apkg
+    xdg-mime default anki.desktop application/x-ankiaddon
+
+    echo "anki local installation completed successfully"
+}
+
+# Check for dependencies
+if ! command -v zstd >/dev/null; then
+    echo "error: zstd not found"
+    exit 1
+elif ! command -v xdg-desktop-menu >/dev/null; then
+    echo "error: xdg-utils not found"
+    exit 1
+fi
+
+download_and_extract_tarball "$ANKI_VER"
+install_anki_locally
+
+{{ end -}}
+{{ end -}}
