@@ -4,7 +4,7 @@ This repository is intended to hold the config files for the Unix utilities used
 
 I'm using [chezmoi](https://chezmoi.io), the dotfile management tool that allows for declaratively defining your configurations across many diverse machines from a single source of truth.
 
-At present, I use two primary x86_64 desktops: One running Fedora 44; the other running Windows with Ubuntu 26.04 on WSL. My chezmoi configuration will largely be designed around these machines but should be generally applicable to other Ubuntu- or Fedora- flavors of Linux, particularly those running GNOME.
+At present, I use two primary x86_64 desktops: One running Fedora 44; the other running Windows with Ubuntu 26.04 on WSL. My chezmoi configuration will largely be designed around these machines but should be generally applicable to other Ubuntu- or Fedora-flavors of Linux, particularly those running GNOME.
 
 Note that I intend for these configs to be limited in scope to a single user's home directory. Besides the system-wide packages that get installed, chezmoi shouldn't touch anything outside of `/home/$USER`. As such, provisioning a fresh machine requires some manual steps in addition to running `chezmoi apply`.
 
@@ -51,7 +51,7 @@ ln -sf ~/opt/chezmoi ~/.local/bin
 chezmoi init -S ~/dev/home/dotfiles home.github.com:colin360/dotfiles.git
 ```
 
-## 5. Apply changes with: `chezmoi apply`
+## 5. Apply changes with `chezmoi apply`
 
 Use any combination of `chezmoi status`, `chezmoi diff`, or `chezmoi cat [file]` to inspect the changes more closely before applying them.
 
