@@ -52,9 +52,9 @@ download_and_extract_tarball()
     fi
 
     if [ -d "$INSTALL_DIR" ]; then
-        echo "target directory already exists... creating backup"
         local backup_dir="${INSTALL_DIR}.bak"
         mv "$INSTALL_DIR" "$backup_dir"
+        echo "target directory already exists... creating backup $backup_dir"
     fi
 
     echo "downloading anki to $INSTALL_DIR from $url"
