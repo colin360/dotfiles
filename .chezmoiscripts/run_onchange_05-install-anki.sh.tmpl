@@ -121,6 +121,37 @@ function install_anki_locally()
     echo "anki local installation completed successfully"
 }
 
+uninstall_anki_locally()
+{
+    local bin_symlink="$HOME/.local/bin/anki"
+    local man_symlink="$HOME/.local/share/man/man1/anki.1"
+
+    if [ -L "$bin_symlink" ]; then
+        rm $bin_symlink
+        echo "removed symlink: $bin_symlink"
+    fi
+
+    if [ -L "$man_symlink" ]; then
+        rm $man_symlink
+        echo "removed symlink: $man_symlink"
+    fi
+
+    xdg-desktop-menu uninstall --mode user anki.desktop
+    xdg-icon-resource uninstall --mode user --context apps --size 48 anki
+
+    if [ -f "$HOME/.local/share/mime/packages/anki.xml" ]; then
+        # Note: this does *not* remove the default application associations in mimeapps.list
+        xdg-mime uninstall --mode user "$HOME/.local/share/mime/packages/anki.xml"
+    fi
+
+    if [ -d "$INSTALL_DIR" ]; then
+        rm -r "$INSTALL_DIR"
+        echo "removed directory: $INSTALL_DIR"
+    fi
+
+    echo "local anki installation successfully removed"
+}
+
 # Check for dependencies
 if ! command -v zstd >/dev/null; then
     echo "error: zstd not found"
