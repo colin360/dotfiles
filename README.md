@@ -48,6 +48,7 @@ The following commands should install the chezmoi executable to `~/opt` and crea
 mkdir -p ~/opt ~/.local/bin ~/dev/{home,work} ~/temp
 sh -c "$(curl -fsLS https://get.chezmoi.io)" -- -b ~/opt
 ln -sf ~/opt/chezmoi ~/.local/bin
+PATH="$HOME/.local/bin:$PATH"
 chezmoi init -S ~/dev/home/dotfiles home.github.com:colin360/dotfiles.git
 ```
 
