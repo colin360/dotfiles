@@ -64,6 +64,8 @@ Desktop wallpapers:
 
 ### Linux
 
+Configure the repositories specified in [.chezmoiexternal.toml](.chezmoiexternal.toml).
+
 ```sh
 # Add tldr remote url for fetching changes from upstream
 cd ~/dev/home/tldr
@@ -74,6 +76,15 @@ git remote set-url --push upstream NONE
 cd ~/.config/nvim
 git config --local user.name "Colin Watson"
 git config --local user.email "264837520+colin360@users.noreply.github.com"
+```
+
+Add user account to `dialout` group for read/write access to serial ports.
+
+```sh
+sudo usermod -aG dialout $USER
+
+# Alternatively, log out and back in
+newgrp dialout
 ```
 
 ### Windows

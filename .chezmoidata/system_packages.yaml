@@ -22,6 +22,7 @@ systemPackages:
     - nodejs
     - zstd
     - xdg-utils
+    - tio
   apt:
     - curl
     - pipx
@@ -48,8 +49,10 @@ systemPackages:
     - npm
     - zstd
     - xdg-utils
+    - tio
   aptIgnoreWsl:
     - alacritty
     - dconf-editor
     - gnome-tweaks
     - xdg-utils
+    - tio
