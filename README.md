@@ -89,7 +89,7 @@ newgrp dialout
 
 ### Windows
 
-At present, I'm using the default Windows Terminal rather than Alacritty. To match my Alacritty config, manually install the appropriate nerd font and theme.
+At present, I'm using the default Windows Terminal. To match my Linux terminal (Alacritty, Ptyxis, etc) config, manually install the appropriate nerd font and theme.
 
 Nerd font:
 1) Download an unzip `https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip`.
