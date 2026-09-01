@@ -36,12 +36,12 @@ screensaver=['<Shift><Super>backslash']
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
 binding='<Super>Return'
-command='ptyxis -s'
+command='alacritty'
 name='launch-terminal'
 
 [org/gnome/shell]
 enabled-extensions=['background-logo@fedorahosted.org', 'tilingshell@ferrarodomenico.com', 'caffeine@patapon.info', 'dash-to-dock@micxgx.gmail.com']
-favorite-apps=['org.mozilla.firefox.desktop', 'org.gnome.Ptyxis.desktop', 'code.desktop']
+favorite-apps=['org.mozilla.firefox.desktop', 'Alacritty.desktop', 'code.desktop']
 
 [org/gnome/shell/extensions/tilingshell]
 edge-tiling-mode='default'

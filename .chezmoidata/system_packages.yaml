@@ -23,6 +23,7 @@ systemPackages:
     - zstd
     - xdg-utils
     - tio
+    - twitter-twemoji-fonts
   apt:
     - curl
     - pipx

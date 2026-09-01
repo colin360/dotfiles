@@ -4,7 +4,6 @@ import = [
 ]
 
 [font]
-normal = { family = "JetBrainsMono NF", style = "Regular" }
 size = 14
 
 [[keyboard.bindings]]
