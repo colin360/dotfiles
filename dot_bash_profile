@@ -1,12 +1,19 @@
 # .bash_profile: executed for login shells
 
-# Private bin directories
-if [ -d "$HOME/bin" ]; then
-    PATH="$HOME/bin:$PATH"
-fi
-if [ -d "$HOME/.local/bin" ]; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
+prepend_to_path() {
+    # Prepend directory to PATH if the directory exists and it's not
+    # already on PATH.
+
+    if [ -d "$1" ]; then
+        if [[ ":$PATH:" != *":$1:"* ]]; then
+            export PATH="$1:$PATH"
+        fi
+    fi
+}
+
+prepend_to_path "$HOME/bin"
+prepend_to_path "$HOME/.local/bin"
+unset -f prepend_to_path
 
 # Exported environment variables
 if [ -f ~/.environment_variables ]; then
