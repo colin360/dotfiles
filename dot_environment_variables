@@ -8,3 +8,6 @@ export VISUAL=nvim
 
 # https://github.com/tldr-pages/tldr-python-client#remote-source
 export TLDR_PAGES_SOURCE_LOCATION=file:///home/$USER/dev/home/tldr/pages
+
+# https://github.com/tldr-pages/tldr-python-client#command-options
+export TLDR_OPTIONS=both
