@@ -45,6 +45,8 @@ command -v fzf >/dev/null && eval "$(fzf --bash)"
 
 command -v starship >/dev/null && eval "$(starship init bash)"
 
-command -v zellij >/dev/null && eval "$(zellij setup --generate-auto-start bash)"
+if [ $TERM_PROGRAM != "vscode" ]; then
+    command -v zellij >/dev/null && eval "$(zellij setup --generate-auto-start bash)"
+fi
 
 command -v zoxide >/dev/null && eval "$(zoxide init bash)"
