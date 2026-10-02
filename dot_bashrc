@@ -41,6 +41,9 @@ if ! shopt -oq posix; then
     fi
 fi
 
+# https://unix.stackexchange.com/a/739650
+unset -f command_not_found_handle
+
 command -v fzf >/dev/null && eval "$(fzf --bash)"
 
 command -v starship >/dev/null && eval "$(starship init bash)"
